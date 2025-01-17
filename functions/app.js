@@ -20,7 +20,7 @@ app.use(express.json());
 // This middleware is to support CORS error handling
 app.use(
   cors({
-    origin: ["https://expanses.netlify.app", "http://localhost:3000"],
+    origin: ["https://basic-expanses.netlify.app"],
   })
 );
 
