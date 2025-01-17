@@ -14,11 +14,17 @@ const port = process.env.PORT || 3002;
 
 // 'app.use' => middleware
 
+// This middleware is to support CORS error handling
+app.use(
+  cors({
+    origin: ["https://basic-expanses.netlify.app/", "http://localhost:3000"],
+  })
+);
+
 // Below line gives parser to help with data string parsed from client side on server side [get access to Request Body]
 app.use(express.json());
 
-// This middleware is to support CORS error handling
-app.use(cors({ origin: "https://basic-expanses.netlify.app/" }));
+app.options("*", cors()); // Enable preflight for all routes
 
 // To add api routes for our application
 app.use("/.netlify/functions/api", require("../routes/expanseRoutes"));

@@ -1,7 +1,7 @@
 {
   "name": "expanses_backend",
   "version": "1.0.0",
-  "main": "/backend/smart_task_manager_backend/functions/api.js",
+  "main": "/backend/expanses_backend/functions/api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node /functions/api.js",
