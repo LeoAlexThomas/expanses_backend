@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const errorHandler = require("../middlewares/errorHandler");
 const connectDB = require("../config/connectDB");
 const cors = require("cors");
-const Serverless = require("serverless-http");
+const serverless = require("serverless-http");
 
 // NOTE: Initiate the connection to database
 connectDB();
@@ -21,6 +21,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["https://basic-expanses.netlify.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
@@ -36,9 +38,17 @@ app.listen(port, () => {
   console.log("listening on port " + port);
 });
 
-const handler = Serverless(app);
+const handler = serverless(app);
 
 module.exports.handler = async (event, context) => {
   const result = await handler(event, context);
-  return result;
+  return {
+    ...result,
+    headers: {
+      ...result.headers,
+      "Access-Control-Allow-Origin": "https://basic-expanses.netlify.app",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  };
 };
