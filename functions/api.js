@@ -18,13 +18,7 @@ const port = process.env.PORT || 3002;
 app.use(express.json());
 
 // This middleware is to support CORS error handling
-app.use(
-  cors({
-    origin: ["https://basic-expanses.netlify.app"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({ origin: "https://basic-expanses.netlify.app/" }));
 
 // To add api routes for our application
 app.use("/.netlify/functions/api", require("../routes/expanseRoutes"));
@@ -42,13 +36,5 @@ const handler = serverless(app);
 
 module.exports.handler = async (event, context) => {
   const result = await handler(event, context);
-  return {
-    ...result,
-    headers: {
-      ...result.headers,
-      "Access-Control-Allow-Origin": "https://basic-expanses.netlify.app",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
-  };
+  return result;
 };

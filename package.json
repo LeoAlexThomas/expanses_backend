@@ -1,11 +1,11 @@
 {
   "name": "expanses_backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "/backend/smart_task_manager_backend/functions/api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node functions/api.js",
-    "dev": "nodemon functions/api.js",
+    "start": "node /functions/api.js",
+    "dev": "nodemon /functions/api.js",
     "build": "netlify deploy --prod"
   },
   "author": "Leo Alex Thomas",
