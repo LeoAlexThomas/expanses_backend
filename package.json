@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node functions/app.js",
-    "dev": "nodemon functions/app.js",
+    "start": "node functions/api.js",
+    "dev": "nodemon functions/api.js",
     "build": "netlify deploy --prod"
   },
   "author": "Leo Alex Thomas",
