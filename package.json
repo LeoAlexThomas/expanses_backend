@@ -1,5 +1,5 @@
 {
-  "name": "expanses_backend",
+  "name": "expenses_backend",
   "version": "1.0.0",
   "description": "This backend for tracking expenses application",
   "main": "/backend/expenses_backend/functions/api.js",

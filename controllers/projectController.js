@@ -16,7 +16,7 @@ const getProjects = asyncHandler(async (req, res) => {
         path: "owner",
         select: "_id name email", // NOTE: To populate selected fields only
       })
-      .populate("expanses");
+      .populate("expenses");
 
     const currentProjects = projects
       .filter((project) => {
@@ -25,7 +25,7 @@ const getProjects = asyncHandler(async (req, res) => {
         });
       })
       .map((project) => {
-        const totalSpent = lodash.sum(project.expanses.map((exp) => exp.spent));
+        const totalSpent = lodash.sum(project.expenses.map((exp) => exp.spent));
         return { ...project._doc, totalSpent: totalSpent };
       });
 
@@ -47,14 +47,14 @@ const getProjectById = asyncHandler(async (req, res) => {
         select: "_id name email", // NOTE: To populate selected fields only
       })
       .populate("owner")
-      .populate("expanses");
+      .populate("expenses");
 
     if (lodash.isNil(project)) {
       res.status(404);
       throw new Error("Project not found");
     }
 
-    const totalSpent = lodash.sum(project.expanses.map((exp) => exp.spent));
+    const totalSpent = lodash.sum(project.expenses.map((exp) => exp.spent));
 
     res.status(200).json({ ...project._doc, totalSpent: totalSpent });
   } catch (error) {

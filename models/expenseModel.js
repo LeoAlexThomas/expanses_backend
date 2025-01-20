@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ExpanseSchema = mongoose.Schema(
+const ExpenseSchema = mongoose.Schema(
   {
     title: {
       type: String,
@@ -21,7 +21,7 @@ const ExpanseSchema = mongoose.Schema(
     ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "Please give user id who is creating this expanse"],
+      required: [true, "Please give user id who is creating this expense"],
     },
     projectId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -32,4 +32,4 @@ const ExpanseSchema = mongoose.Schema(
   { timestamp: true }
 );
 
-module.exports = mongoose.model("Expanse", ExpanseSchema);
+module.exports = mongoose.model("Expense", ExpenseSchema);

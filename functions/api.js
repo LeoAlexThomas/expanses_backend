@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 // To add api routes for our application
-app.use("/.netlify/functions/api", require("../routes/expanseRoutes"));
+app.use("/.netlify/functions/api", require("../routes/expenseRoutes"));
 app.use("/.netlify/functions/api", require("../routes/userRoutes"));
 app.use("/.netlify/functions/api", require("../routes/projectRoutes"));
 

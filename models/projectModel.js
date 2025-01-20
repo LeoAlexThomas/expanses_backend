@@ -22,17 +22,17 @@ const ProjectSchema = mongoose.Schema(
       ref: "User",
       required: [true, "Please add a owner to this project"],
     },
-    expanses: [
+    expenses: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Expanse",
+        ref: "Expense",
       },
     ],
   },
   { timestamp: true }
 );
 
-// Add a default empty array to the expanses field
-ProjectSchema.path("expanses").default(() => []);
+// Add a default empty array to the expenses field
+ProjectSchema.path("expenses").default(() => []);
 
 module.exports = mongoose.model("Project", ProjectSchema);
